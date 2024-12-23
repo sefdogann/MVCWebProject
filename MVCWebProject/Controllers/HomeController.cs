@@ -17,8 +17,28 @@ namespace MVCWebProject.Controllers
         {
             return View();
         }
+        public IActionResult Login()
+        {
+            return View(); 
+        } 
+        public IActionResult Signup() 
+        {
+            return View();
+        }
+        public IActionResult getstarted()
+        {
+            return View();
+        }
+        public IActionResult forgot()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult contact()
         {
             return View();
         }
