@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şifremi Unuttum</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #6c63ff;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+        .btn {
+            display: inline-block;
+            background-color: #6c63ff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+        }
+
+            .btn:hover {
+                background-color: #5751d9;
+            }
+
+        .link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+            .link a {
+                color: #6c63ff;
+                text-decoration: none;
+            }
+
+                .link a:hover {
+                    text-decoration: underline;
+                }
+
+        .message {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Forgot Password</h1>
+    </header>
+
+    <div class="container">
+        <h2>Şifrenizi Sıfırlamak İçin E-posta Adresinizi Girin</h2>
+        <form id="forgotPasswordForm">
+            <div class="form-group">
+                <label for="email">E-posta Adresi</label>
+                <input type="email" id="email" placeholder="E-posta adresinizi girin" required>
+            </div>
+
+            <button type="submit" class="btn">Şifreyi Sıfırla</button>
+        </form>
+
+        <div class="link">
+            <p><a href="giris.html">Geri dön ve giriş yap</a></p>
+        </div>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('forgotPasswordForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+
+            if (email) {
+                // Burada gerçek bir e-posta gönderim işlemi yapılabilir
+                // Örneğin, bir API çağrısı yapılabilir.
+
+                // Hedef: Kullanıcıya şifre sıfırlama linki göndermek
+                document.getElementById('message').innerText = 'Şifre sıfırlama talimatları e-posta adresinize gönderildi.';
+                document.getElementById('forgotPasswordForm').reset();
+            } else {
+                document.getElementById('message').innerText = 'Lütfen geçerli bir e-posta adresi girin.';
+                document.getElementById('message').style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
