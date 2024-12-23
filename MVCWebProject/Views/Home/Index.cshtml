@@ -1,8 +1,51 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YBU CV Maker </title>
+    <link rel="stylesheet" href="/Content/homepage.css">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">Ömer Turhan</a>.</p>
-</div>
+</head>
+<body>
+    <header>
+        <div class="logo"> YBU CV Maker</div>
+        <div class="auth-buttons">
+            <a href="@Url.Action("Login", "Home")" class="btn btn-primary">Login</a>
+            <a href="@Url.Action("Signup", "Home")" class="btn btn-primary">Sign Up</a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Create Your Professional CV</h1>
+        <p>You are in the right place to prepare a professional CV...</p>
+        <a href="@Url.Action("getstarted", "Home")" class="btn btn-primary">Get Started</a>
+    </div>
+
+    <section class="features">
+        <div class="feature">
+            <h3>Simple Use</h3>
+            <p>Our simple interface allows you to quickly enter your information and create a professional CV.</p>
+        </div>
+        <div class="feature">
+            <h3>Customizable Templates</h3>
+            <p>Choose from a variety of templates to suit your style and the industry you're applying to.</p>
+        </div>
+        <div class="feature">
+            <h3>Increase in Likelihood of Getting Hired</h3>
+            <p>You will stand out among all other candidates with a CV that describes you very well.</p>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Service</a> |
+            <a href="@Url.Action("Contact", "Home")" class="btn btn-primary">Contact Us</a>
+            
+        </div>
+        <p>&copy; 2024 YBU CV Maker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

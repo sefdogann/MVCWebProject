@@ -1,0 +1,131 @@
+﻿
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #6c63ff, #948fff);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.signup-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+    .signup-container::before {
+        content: '';
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 200px;
+        height: 200px;
+        background: rgba(108, 99, 255, 0.2);
+        border-radius: 50%;
+        animation: float 6s infinite;
+    }
+
+    .signup-container::after {
+        content: '';
+        position: absolute;
+        bottom: -50px;
+        left: -50px;
+        width: 200px;
+        height: 200px;
+        background: rgba(148, 143, 255, 0.2);
+        border-radius: 50%;
+        animation: float-reverse 6s infinite;
+    }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(15px);
+    }
+}
+
+@keyframes float-reverse {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.signup-container h1 {
+    font-size: 2rem;
+    color: #6c63ff;
+    margin-bottom: 1.5rem;
+}
+
+.signup-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.signup-container input[type="text"],
+.signup-container input[type="email"],
+.signup-container input[type="password"] {
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+    .signup-container input[type="text"]:focus,
+    .signup-container input[type="email"]:focus,
+    .signup-container input[type="password"]:focus {
+        border-color: #6c63ff;
+        box-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
+        outline: none;
+    }
+
+.signup-container button {
+    padding: 1rem;
+    font-size: 1rem;
+    color: white;
+    background: linear-gradient(135deg, #6c63ff, #948fff);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+    .signup-container button:hover {
+        background: linear-gradient(135deg, #948fff, #6c63ff);
+        transform: scale(1.05);
+    }
+
+.signup-container .links {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+    .signup-container .links a {
+        color: #6c63ff;
+        text-decoration: none;
+    }
+
+        .signup-container .links a:hover {
+            text-decoration: underline;
+        }
