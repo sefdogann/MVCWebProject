@@ -90,18 +90,18 @@
     </header>
 
     <div class="container">
-        <h2>Şifrenizi Sıfırlamak İçin E-posta Adresinizi Girin</h2>
+        <h2>Enter Your Email Address to Reset Your Password</h2>
         <form id="forgotPasswordForm">
             <div class="form-group">
-                <label for="email">E-posta Adresi</label>
-                <input type="email" id="email" placeholder="E-posta adresinizi girin" required>
+                <label for="email">E-Mail Address</label>
+                <input type="email" id="email" placeholder="Enter your Email" required>
             </div>
 
-            <button type="submit" class="btn">Şifreyi Sıfırla</button>
+            <button type="submit" class="btn">Reset Password</button>
         </form>
 
         <div class="link">
-            <p><a a href="@Url.Action("login", "Home")">Geri Dön</a></p>
+            <p><a a href="@Url.Action("login", "Home")">Go Back</a></p>
         </div>
 
         <div class="message" id="message"></div>
@@ -114,14 +114,14 @@
             const email = document.getElementById('email').value;
 
             if (email) {
-                // Burada gerçek bir e-posta gönderim işlemi yapılabilir
-                // Örneğin, bir API çağrısı yapılabilir.
+                // A real email sending process can be done here
+                // For example, an API call can be made.
 
-                // Hedef: Kullanıcıya şifre sıfırlama linki göndermek
-                document.getElementById('message').innerText = 'Şifre sıfırlama talimatları e-posta adresinize gönderildi.';
+                // Goal: Send a password reset link to the user
+                document.getElementById('message').innerText = 'Password reset instructions have been sent to your Email address.';
                 document.getElementById('forgotPasswordForm').reset();
             } else {
-                document.getElementById('message').innerText = 'Lütfen geçerli bir e-posta adresi girin.';
+                document.getElementById('message').innerText = 'Please enter a valid Email address.';
                 document.getElementById('message').style.color = 'red';
             }
         });

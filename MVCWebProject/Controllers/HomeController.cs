@@ -25,6 +25,10 @@ namespace MVCWebProject.Controllers
         {
             return View();
         }
+        public IActionResult termsofservice()
+        {
+            return View();
+        }
         public IActionResult getstarted()
         {
             return View();
