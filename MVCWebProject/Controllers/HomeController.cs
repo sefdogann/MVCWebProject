@@ -29,6 +29,10 @@ namespace MVCWebProject.Controllers
         {
             return View();
         }
+        public IActionResult moderntemplate()
+        {
+            return View();
+        }
         public IActionResult getstarted()
         {
             return View();

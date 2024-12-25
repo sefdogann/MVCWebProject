@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information - YBU CV Maker</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/moderntemplate.css")" />
+
+</head>
+<body>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="main-container">
+        <div class="form-container">
+            <h1>User Information</h1>
+            <form id="userForm">
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" name="surname" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="summary">Summary:</label>
+                    <textarea id="summary" name="summary" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="experience">Experience:</label>
+                    <textarea id="experience" name="experience" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="education">Education:</label>
+                    <textarea id="education" name="education" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="skills">Skills and Abilities:</label>
+                    <textarea id="skills" name="skills" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="interests">Interests:</label>
+                    <textarea id="interests" name="interests" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main_container" style="display: none;">
+        <!-- HEADER -->
+        <div id="header">
+            <!-- LOGOTYPE/NAME -->
+            <div class="header_logotype_container">
+                <h1 class="logotype_name"><span id="cv-name"></span> <span id="cv-surname" class="purple"></span></h1>
+            </div>
+        </div>
+        <!-- LEFT COL -->
+        <div id="left_col">
+            <div class="profile_frame">
+                <div class="profile_picture"></div>
+            </div>
+            <div class="hello_content">
+                <h2>Hello!</h2>
+                <p id="cv-summary"></p>
+            </div>
+            <div class="contact_details_content">
+                <h2>Contact details</h2>
+                <p class="purple">Phone:</p>
+                <p id="cv-phone" class="contact-font"></p>
+                <p class="purple">Email:</p>
+                <p id="cv-email" class="contact-font"></p>
+                <p class="purple">Address:</p>
+                <p id="cv-address" class="contact-font"></p>
+            </div>
+        </div>
+        <!-- PROFILE CONTENT -->
+        <div id="content_container">
+            <div class="block">
+                <h2>Experience</h2>
+                <p id="cv-experience"></p>
+            </div>
+            <div class="block">
+                <h2>Education</h2>
+                <p id="cv-education"></p>
+            </div>
+            <div class="block">
+                <h2>Skills and Abilities</h2>
+                <p id="cv-skills"></p>
+            </div>
+            <div class="block">
+                <h2>Interests & Hobbies</h2>
+                <p id="cv-interests"></p>
+            </div>
+        </div>
+        <div class="clear"></div>
+       
+       
+    </div>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            document.getElementById('cv-name').textContent = document.getElementById('name').value;
+            document.getElementById('cv-surname').textContent = document.getElementById('surname').value;
+            document.getElementById('cv-phone').textContent = document.getElementById('phone').value;
+            document.getElementById('cv-email').textContent = document.getElementById('email').value;
+            document.getElementById('cv-address').textContent = document.getElementById('address').value;
+            document.getElementById('cv-summary').textContent = document.getElementById('summary').value;
+            document.getElementById('cv-experience').textContent = document.getElementById('experience').value;
+            document.getElementById('cv-education').textContent = document.getElementById('education').value;
+            document.getElementById('cv-skills').textContent = document.getElementById('skills').value;
+            document.getElementById('cv-interests').textContent = document.getElementById('interests').value;
+
+            document.querySelector('.main-container').style.display = 'none';
+            document.getElementById('main_container').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

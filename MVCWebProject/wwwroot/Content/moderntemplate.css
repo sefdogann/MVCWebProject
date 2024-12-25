@@ -1,0 +1,195 @@
+﻿body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: linear-gradient(135deg, #6c63ff, #9D98FF);
+    margin: 0;
+    padding: 0;
+    color: #333;
+    overflow-x: hidden; /* Sadece yatay kaydırma çubuğunu gizle */
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+h1 {
+    color: #6c63ff;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+    .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #666;
+    }
+
+    .input-group input, .input-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .input-group textarea {
+        resize: vertical;
+        height: 100px;
+    }
+
+.btn-submit {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #6c63ff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+    .btn-submit:hover {
+        background-color: #9D98FF;
+    }
+
+/* CV Template Styles */
+
+#main_container {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #6c63ff;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.header_logotype_container h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+    .header_logotype_container h1 .purple {
+        color: #6c63ff;
+    }
+
+.profile_frame {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hello_content, .contact_details_content, .get_social_content, #content_container {
+    margin-bottom: 20px;
+}
+
+    .contact_details_content p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+.block {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #6c63ff;
+}
+
+    .block h1, .block h2 {
+        color: #333;
+    }
+
+    .block p, .block ul {
+        color: #666;
+    }
+
+.horizontal_line {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+    .horizontal_line .line_left, .horizontal_line .line_right {
+        flex: 1;
+        height: 2px;
+        background-color: #6c63ff;
+    }
+
+.clear {
+    clear: both;
+}
+
+#footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
+}
+
+/* Animated Background Circles */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 255, 0.2);
+    animation: move 8s infinite;
+    z-index: 0;
+}
+
+    .circle:nth-child(1) {
+        width: 100px;
+        height: 100px;
+        top: 10%;
+        left: 20%;
+        animation-duration: 6s;
+    }
+
+    .circle:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        top: 30%;
+        left: 70%;
+        animation-duration: 8s;
+    }
+
+    .circle:nth-child(3) {
+        width: 200px;
+        height: 200px;
+        top: 50%;
+        left: 40%;
+        animation-duration: 10s;
+    }
+
+@keyframes move {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
