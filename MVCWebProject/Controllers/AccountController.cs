@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using MVCWebProject.Data;
 using MVCWebProject.Models;
 using System.Linq;
@@ -21,22 +22,27 @@ namespace MVCWebProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SignUp(User user)
+        public async Task<JsonResult> SignUp(User user)
         {
             if (ModelState.IsValid)
             {
-                // E-posta adresinin zaten var olup olmadığını kontrol et
                 if (_context.Users.Any(u => u.Email == user.Email))
                 {
-                    ModelState.AddModelError("Email", "This email address is already registered.");
-                    return View(user);
+                    return Json(new { success = false, message = "This email address is already registered." });
                 }
 
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Login","Home");
+                return Json(new { success = true, message = "Sign up successful! Redirecting to login page..." });
             }
-            return View(user);
+            return Json(new { success = false, message = "Invalid data." });
+        }
+
+        [HttpPost]
+        public JsonResult CheckEmail(string email)
+        {
+            bool emailExists = _context.Users.Any(u => u.Email == email);
+            return Json(new { exists = emailExists });
         }
 
         public IActionResult Login()
@@ -45,17 +51,21 @@ namespace MVCWebProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(User user)
+        public JsonResult Login(User user)
         {
             var loggedInUser = _context.Users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
             if (loggedInUser != null)
             {
-                // Başarılı giriş işlemi
-                return RedirectToAction("Index", "Home");
+                HttpContext.Session.SetString("Username", loggedInUser.FullName);
+                return Json(new { success = true, message = "Login successful! Redirecting to home page..." });
             }
-            // Hatalı giriş işlemi
-            ModelState.AddModelError("", "Invalid login attempt.");
-            return View(user);
+            return Json(new { success = false, message = "Invalid login attempt." });
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

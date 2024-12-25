@@ -1,18 +1,84 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YBU CV Maker </title>
+    <title>YBU CV Maker</title>
     <link rel="stylesheet" href="/Content/homepage.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Açılır menü stilleri */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #9C98FF;
+                    color:white;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown button {
+            background-color: white;
+            color: #8882FF;
+            border: #9C98FF;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            outline: #9C98FF;
+        }
+
+            .dropdown button:hover {
+                background-color: #9C98FF;
+                color:white;
+            }
+    </style>
 </head>
 <body>
     <header>
         <div class="logo"> YBU CV Maker</div>
         <div class="auth-buttons">
-            <a href="@Url.Action("Login", "Home")" class="btn btn-primary">Login</a>
-            <a href="@Url.Action("Signup", "Home")" class="btn btn-primary">Sign Up</a>
+            @if (HttpContextAccessor.HttpContext.Session.GetString("Username") == null)
+            {
+                <a href="@Url.Action("Login", "Account")" class="btn btn-primary">Login</a>
+                <a href="@Url.Action("Signup", "Account")" class="btn btn-primary">Sign Up</a>
+            }
+            else
+            {
+                <div class="dropdown">
+                    <button class="btn btn-primary">@HttpContextAccessor.HttpContext.Session.GetString("Username")</button>
+                    <div class="dropdown-content">                       
+                        <a href="@Url.Action("MyCVs", "Account")">MyCVs</a>
+                        <a href="#" id="logoutLink">Logout</a>
+                    </div>
+                </div>
+            }
         </div>
     </header>
 
@@ -35,7 +101,6 @@
             <h3>Increase in Likelihood of Getting Hired</h3>
             <p>You will stand out among all other candidates with a CV that describes you very well.</p>
         </div>
-
     </section>
 
     <footer>
@@ -43,9 +108,27 @@
             <a href="@Url.Action("Privacy", "Home")" class="btn btn-primary">Privacy Policy</a> |
             <a href="@Url.Action("termsofservice", "Home")" class="btn btn-primary">Terms of Service</a> |
             <a href="@Url.Action("Contact", "Home")" class="btn btn-primary">Contact Us</a>
-            
         </div>
         <p>&copy; 2024 YBU CV Maker. All rights reserved.</p>
     </footer>
+
+    <script>
+        $(document).ready(function () {
+            $('#logoutLink').click(function (event) {
+                event.preventDefault(); // Formun otomatik gönderimini durdur
+                var confirmLogout = confirm("Are you sure you want to logout?");
+                if (confirmLogout) {
+                    $.ajax({
+                        url: '@Url.Action("Logout", "Account")',
+                        type: 'POST',
+                        success: function () {
+                            alert("Successfully logged out. Redirecting to the home page...");
+                            window.location.href = '@Url.Action("Index", "Home")';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -7,23 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YBU CV Maker - Login</title>
     <link rel="stylesheet" href="/Content/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="background-elements">
-        <span></span>
-        <span></span>
-    </div>
     <div class="login-container">
-        <h1>Login to CV Maker</h1>
-        <form asp-action="Login" asp-controller="Account" method="post">
+        <h1>Login</h1>
+        <form id="loginForm" method="post">
             <input asp-for="Email" placeholder="Email" type="email" required />
             <input asp-for="Password" placeholder="Password" type="password" required />
             <button type="submit">Login</button>
         </form>
         <div class="links">
             <p>Don't have an account? <a href="@Url.Action("SignUp", "Account")" class="btn btn-primary">Sign Up</a></p>
-            <p><a href="@Url.Action("ForgotPassword", "Account")" class="btn btn-primary">Forgot password?</a></p>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#loginForm').submit(function (event) {
+                event.preventDefault();
+                var form = $(this);
+
+                $.ajax({
+                    url: '@Url.Action("Login", "Account")',
+                    type: 'POST',
+                    data: form.serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            alert(data.message);
+                            window.location.href = '@Url.Action("Index", "Home")';
+                        } else {
+                            alert(data.message);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
