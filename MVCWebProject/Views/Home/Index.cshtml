@@ -36,7 +36,7 @@
 
                 .dropdown-content a:hover {
                     background-color: #9C98FF;
-                    color:white;
+                    color: white;
                 }
 
         .dropdown:hover .dropdown-content {
@@ -56,7 +56,7 @@
 
             .dropdown button:hover {
                 background-color: #9C98FF;
-                color:white;
+                color: white;
             }
     </style>
 </head>
@@ -73,9 +73,9 @@
             {
                 <div class="dropdown">
                     <button class="btn btn-primary">@HttpContextAccessor.HttpContext.Session.GetString("Username")</button>
-                    <div class="dropdown-content">                       
-                        <a href="@Url.Action("MyCVs", "Account")">MyCVs</a>
+                    <div class="dropdown-content">
                         <a href="#" id="logoutLink">Logout</a>
+                        <a href="@Url.Action("MyCVs", "Account")">MyCVs</a>
                     </div>
                 </div>
             }
@@ -85,7 +85,7 @@
     <div class="hero">
         <h1>Create Your Professional CV</h1>
         <p>You are in the right place to prepare a professional CV...</p>
-        <a href="@Url.Action("getstarted", "Home")" class="btn btn-primary">Get Started</a>
+        <button id="getStartedButton" class="btn btn-primary">Get Started</button>
     </div>
 
     <section class="features">
@@ -126,6 +126,16 @@
                             window.location.href = '@Url.Action("Index", "Home")';
                         }
                     });
+                }
+            });
+
+            $('#getStartedButton').click(function () {
+                var isLoggedIn = @Html.Raw(HttpContextAccessor.HttpContext.Session.GetString("Username") != null ? "true" : "false");
+                if (!isLoggedIn) {
+                    alert("You need to be logged in to get started!");
+                    window.location.href = '@Url.Action("Login", "Account")';
+                } else {
+                    window.location.href = '@Url.Action("getstarted", "Home")';
                 }
             });
         });
